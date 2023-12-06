@@ -63,7 +63,7 @@ class Claim(models.Model):
         verbose_name='Кто жаловался?', 
         related_name="claims_user", 
         db_index=True)
-    flat_number = models.ForeignKey(
+    flat = models.ForeignKey(
         Flat, 
         verbose_name='Номер квартиры', 
         on_delete=models.CASCADE,
@@ -73,7 +73,7 @@ class Claim(models.Model):
 
 
     def __str__(self):
-        return f'{self.user} {flat_number}'
+        return f'{self.user} {flat}'
 
 
 class Owner(models.Model):

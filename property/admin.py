@@ -19,7 +19,7 @@ class FlatAdmin(admin.ModelAdmin):
 
 @admin.register(Claim)
 class ClaimAdmin(admin.ModelAdmin):
-    raw_id_fields = ['user', 'flat_number']
+    raw_id_fields = ['user', 'flat']
 
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
