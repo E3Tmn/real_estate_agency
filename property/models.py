@@ -77,9 +77,9 @@ class Claim(models.Model):
 
 
 class Owner(models.Model):
-    owner_name = models.CharField('ФИО владельца', max_length=200, db_index=True)
-    owners_phonenumber = models.CharField('Номер владельца', max_length=20)
-    owner_pure_phone = PhoneNumberField(verbose_name='Нормализированный номер владельца', blank=True, null=True)
+    name = models.CharField('ФИО владельца', max_length=200, db_index=True)
+    phonenumber = models.CharField('Номер владельца', max_length=20)
+    pure_phone = PhoneNumberField(verbose_name='Нормализированный номер владельца', blank=True, null=True)
     flats = models.ManyToManyField(Flat, verbose_name='Квартиры в собственности', related_name="owners_flat", db_index=True)
 
 
