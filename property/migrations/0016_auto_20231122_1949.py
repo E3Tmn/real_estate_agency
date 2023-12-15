@@ -11,7 +11,7 @@ def parse_phonenumber(apps, schema_editor):
     for flat in flat_set.iterator():
         phonenumber = phonenumbers.parse(flat.owners_phonenumber, 'RU')
         if phonenumbers.is_valid_number(phonenumber):
-            flat.owner_pure_phone = f'{phonenumber.country_code}{phonenumber.national_number}'
+            flat.owner_pure_phone = phonenumbers.format_number(phonenumber, phonenumbers.PhoneNumberFormat.E164)
         else:
             flat.owner_pure_phone = None
         flat.save()

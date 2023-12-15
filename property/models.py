@@ -49,7 +49,7 @@ class Flat(models.Model):
     new_building = models.BooleanField('Новостройка',
         null=True,
         db_index=True)
-    liked_by = models.ManyToManyField(User, related_name='liked_flat', verbose_name='Кто лайкнул', blank=True)
+    liked_by = models.ManyToManyField(User, related_name='liked_flats', verbose_name='Кто лайкнул', blank=True)
 
 
     def __str__(self):
@@ -61,15 +61,15 @@ class Claim(models.Model):
         User, 
         on_delete=models.CASCADE, 
         verbose_name='Кто жаловался?', 
-        related_name="claims_user", 
+        related_name="complaints", 
         db_index=True)
     flat = models.ForeignKey(
         Flat, 
         verbose_name='Номер квартиры', 
         on_delete=models.CASCADE,
-        related_name="flat_complaints",
+        related_name="complaints",
         db_index=True)
-    claim_text = models.TextField("Текст жалобы")
+    text = models.TextField("Текст жалобы")
 
 
     def __str__(self):
@@ -84,4 +84,4 @@ class Owner(models.Model):
 
 
     def __str__(self):
-        return f'{self.name}'
+        return self.name
